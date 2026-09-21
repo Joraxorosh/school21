@@ -1,0 +1,17 @@
+#include "../brick_game/tetris/figures.h"
+#include "../brick_game/tetris/tetris.h"
+#include <check.h>
+
+#suite calc_tick_collision
+
+#test calc_tick_collision
+
+initGame();  
+tetg->pause = 0;
+tetg->ticks_left = 0;
+tetg->player->action= Down;
+
+int res = collision(tetg);
+
+ck_assert_int_eq(res,0);
+freeGame(tetg);

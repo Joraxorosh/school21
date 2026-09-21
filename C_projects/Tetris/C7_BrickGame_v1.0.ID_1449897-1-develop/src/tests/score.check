@@ -1,0 +1,100 @@
+#suite count_score_100
+#test count_score_100
+
+initGame();  
+tetg->pause = 0;
+tetg->high_score = 0;
+tetg->score = 700;
+
+int line_fill = 18;
+for(int i = 0; i < tetg->field->width; i++){
+	tetg->field->blocks[line_fill][i].b = 1;
+}
+countScore(tetg);
+
+ck_assert_int_eq(tetg->score,800);
+freeGame(tetg);
+
+
+#suite count_score_300
+#test count_score_300
+
+initGame();  
+tetg->pause = 0;
+tetg->high_score = 0;
+tetg->score = 700;
+
+int line_fill = 18;
+int line_fill_2 = 17;
+for(int i = 0; i < tetg->field->width; i++){
+	tetg->field->blocks[line_fill][i].b = 1;
+	tetg->field->blocks[line_fill_2][i].b = 1;
+}
+countScore(tetg);
+
+ck_assert_int_eq(tetg->score,1000);
+freeGame(tetg);
+
+
+#suite count_score_700
+#test count_score_700
+
+initGame();  
+tetg->pause = 0;
+tetg->high_score = 0;
+tetg->score = 700;
+
+int line_fill = 18;
+int line_fill_2 = 17;
+int line_fill_3 = 16;
+for(int i = 0; i < tetg->field->width; i++){
+	tetg->field->blocks[line_fill][i].b = 1;
+	tetg->field->blocks[line_fill_2][i].b = 1;
+	tetg->field->blocks[line_fill_3][i].b = 1;
+}
+countScore(tetg);
+
+ck_assert_int_eq(tetg->score,1400);
+freeGame(tetg);
+
+
+
+#suite count_score_1500
+#test count_score_1500
+
+initGame();  
+tetg->pause = 0;
+tetg->high_score = 0;
+tetg->score = 700;
+
+int line_fill = 18;
+int line_fill_2 = 17;
+int line_fill_3 = 16;
+int line_fill_4 = 15;
+for(int i = 0; i < tetg->field->width; i++){
+	tetg->field->blocks[line_fill][i].b = 1;
+	tetg->field->blocks[line_fill_2][i].b = 1;
+	tetg->field->blocks[line_fill_3][i].b = 1;
+	tetg->field->blocks[line_fill_4][i].b = 1;
+}
+countScore(tetg);
+
+ck_assert_int_eq(tetg->score,2200);
+freeGame(tetg);
+
+#suite count_score_0
+#test count_score_0
+
+initGame();  
+tetg->pause = 0;
+tetg->high_score = 0;
+tetg->score = 700;
+
+int line_fill = 18;
+for(int i = 0; i < tetg->field->width; i++){
+	tetg->field->blocks[line_fill][i].b = 0;
+}
+countScore(tetg);
+
+ck_assert_int_eq(tetg->score,700);
+freeGame(tetg);

@@ -1,0 +1,31 @@
+#suite rotate_figure
+
+#test rotate_figure
+
+initGame();  
+
+tetg->pause = 0;
+userInput(Up, 0);
+GameInfo_t game_info = updateCurrentState();
+ck_assert_int_eq(tetg->player->action, Up);
+ck_assert_ptr_nonnull(tetg->figure);
+freeGui(game_info, tetg->figurest->size, tetg->field->height);
+freeGame(tetg);
+
+
+
+#test rotate_figure_collision
+
+initGame();  
+
+tetg->pause = 0;
+
+for(int i = 0; i < tetg->field->width; i++){
+		tetg->field->blocks[2][i].b = 1;
+	}
+userInput(Up, 0);
+GameInfo_t game_info = updateCurrentState();
+ck_assert_int_eq(tetg->player->action, Up);
+ck_assert_ptr_nonnull(tetg->figure);
+freeGui(game_info, tetg->figurest->size, tetg->field->height);
+freeGame(tetg);

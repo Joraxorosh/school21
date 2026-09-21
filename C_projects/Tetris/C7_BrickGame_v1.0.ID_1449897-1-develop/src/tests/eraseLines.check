@@ -1,0 +1,11 @@
+#suite test_eraseLines_1
+#test test_eraseLines_1
+
+ initGame();
+  int line_erase = 18;
+  for (int i = 0; i < tetg->field->width; i++) {
+    tetg->field->blocks[line_erase][i].b = 1;
+  }
+  int erased = eraseLines(tetg);
+  ck_assert_int_eq(erased, 1);
+  freeGame(tetg);

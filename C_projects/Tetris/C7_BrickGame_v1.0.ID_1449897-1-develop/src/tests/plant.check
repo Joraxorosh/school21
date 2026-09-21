@@ -1,0 +1,8 @@
+#suite plant_figure
+#test plant_figure
+
+initGame();  
+tetg->pause = 0;
+plantFigure(tetg);
+ck_assert_ptr_nonnull(tetg->figure);
+freeGame(tetg);

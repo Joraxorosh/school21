@@ -1,0 +1,95 @@
+#suite input
+#test input_Left_action
+
+initGame();  
+tetg->pause = 1;
+userInput(Left, 0);
+GameInfo_t game_info = updateCurrentState();
+ck_assert_int_eq(tetg->player->action, Left);
+freeGui(game_info, tetg->figurest->size, tetg->field->height);
+freeGame(tetg);
+
+#test input_Left_action_with_collision
+
+initGame();  
+tetg->pause = 0;
+userInput(Left, 0);
+for(int i = 0; i < tetg->field->width; i++){
+		tetg->field->blocks[1][i].b = 1;
+	}
+GameInfo_t game_info = updateCurrentState();
+ck_assert_int_eq(tetg->player->action, Left);
+freeGui(game_info, tetg->figurest->size, tetg->field->height);
+freeGame(tetg);
+
+
+#test input_Right_action
+initGame();  
+tetg->pause = 0;
+userInput(Right, 0);
+GameInfo_t game_info = updateCurrentState();
+ck_assert_int_eq(tetg->player->action, Right);
+freeGui(game_info, tetg->figurest->size, tetg->field->height);
+freeGame(tetg);
+
+
+#test input_Down_action
+initGame();  
+tetg->pause = 0;
+userInput(Down, 0);
+GameInfo_t game_info = updateCurrentState();
+ck_assert_int_eq(tetg->player->action, Down);
+freeGui(game_info, tetg->figurest->size, tetg->field->height);
+freeGame(tetg);
+
+
+#test input_Down_action_with_collision
+initGame();  
+tetg->pause = 0;
+userInput(Down, 0);
+for(int i = 0; i < tetg->field->width; i++){
+		tetg->field->blocks[1][i].b = 1;
+	}
+GameInfo_t game_info = updateCurrentState();
+ck_assert_int_eq(tetg->player->action, Down);
+freeGui(game_info, tetg->figurest->size, tetg->field->height);
+freeGame(tetg);
+
+
+#test input_Pause_action
+
+initGame();
+userInput(Pause, 0);
+GameInfo_t game_info = updateCurrentState();
+ck_assert_int_eq(tetg->player->action, Pause);
+freeGui(game_info, tetg->figurest->size, tetg->field->height);
+freeGame(tetg);
+
+
+#test input_Terminate_action
+
+initGame();  
+userInput(Terminate, 0);
+GameInfo_t game_info = updateCurrentState();
+ck_assert_int_eq(tetg->player->action, Terminate);
+freeGui(game_info, tetg->figurest->size, tetg->field->height);
+freeGame(tetg);
+
+
+#test input_Start_action
+
+initGame();  
+userInput(Start, 0);
+GameInfo_t game_info = updateCurrentState();
+ck_assert_int_eq(tetg->player->action, Start);
+freeGui(game_info, tetg->figurest->size, tetg->field->height);
+freeGame(tetg);
+
+#test input_default_action
+
+initGame();  
+userInput(Action, 0);
+GameInfo_t game_info = updateCurrentState();
+ck_assert_int_eq(tetg->player->action, Action);
+freeGui(game_info, tetg->figurest->size, tetg->field->height);
+freeGame(tetg);

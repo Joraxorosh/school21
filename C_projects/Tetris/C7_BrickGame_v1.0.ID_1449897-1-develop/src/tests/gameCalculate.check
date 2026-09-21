@@ -1,0 +1,32 @@
+#suite calculate_game
+#test calculate_game
+
+	initGame(); 
+	tetg->ticks = 1;
+    tetg->ticks_left=0;
+		tetg->pause=0;
+
+    calcOne(tetg);
+
+    ck_assert_int_eq(tetg->ticks_left, tetg->ticks);
+
+		freeGame(tetg);
+
+#test calculate_game_with_collision
+
+	initGame();
+
+	int line_fill_2 = 1;
+	int line_fill_3 = 2;
+	int line_fill_4 = 3;
+	for(int i = 0; i < tetg->field->width; i++){
+		tetg->field->blocks[line_fill_2][i].b = 1;
+		tetg->field->blocks[line_fill_3][i].b = 1;
+		tetg->field->blocks[line_fill_4][i].b = 1;
+	}
+
+    calcOne(tetg);
+
+    ck_assert_int_eq(tetg->ticks_left, tetg->ticks);
+
+		freeGame(tetg);
