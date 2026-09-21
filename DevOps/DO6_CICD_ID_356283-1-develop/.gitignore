@@ -1,0 +1,69 @@
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# DO6_CICD: built binaries and test-run artifacts (not source)
+src/cat/s21_cat
+src/grep/s21_grep
+src/cat/s21_cat.txt
+src/cat/cat.txt
+src/grep/s21_grep.txt
+src/grep/grep.txt
+src/cat/log.txt
+src/grep/log.txt
+
+# VM image dumps must never be committed
+*.ova
+*.vdi
+*.vmdk
+*.vhdx
+*.ovf

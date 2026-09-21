@@ -1,0 +1,11 @@
+test opa
+CLEAN
+clean
+{
+}
+!
+(
+)
+hello world
+^#include
+ls
